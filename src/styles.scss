@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    background:white;
+}
+
+$headerHeight: 50px;
+$containerSubtract: 55px;
+.header {
+    height: $headerHeight;
+    background:blue;
+    min-height: $headerHeight;
+    color:white;
+    padding:5px;
+
+    .title {
+        color:white;
+    }
+}
+
+.app-content {
+    min-height: 300px;
+    border: 1px solid;
+    margin-top:5px;
+}
