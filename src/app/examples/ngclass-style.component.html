@@ -1,0 +1,68 @@
+<h2>NgClass and NgStyle</h2>
+
+<button (click)="changeCls('is-primary')">Primary</button>
+<button (click)="changeCls('is-info')">Info</button>
+<button (click)="changeCls('is-danger')">Danger</button>
+
+<div>Current Selection: {{ notificationClass }}</div>
+<!-- string version of ngClass -->
+<div class="notification center-it" [ngClass]="notificationClass">
+    this is normal string example
+</div>
+<hr>
+<!-- array version of ngClass -->
+<button (click)="addToArray('center-it')">Center</button>
+<button (click)="addToArray('bold')">Bold</button>
+<button (click)="addToArray('big')">Big</button>
+<button (click)="removeFirstFromArray()">Remove First</button>
+
+
+
+
+<div class="notification is-danger" [ngClass]="arrayClass">
+    this is Array example
+</div>
+
+<hr>
+<!-- Object version of ngClass -->
+<div class="chks">
+    <input type="checkbox" (click)="toggle('center-it')">Center
+    <input type="checkbox" (click)="toggle('big')">Big
+    <input type="checkbox" (click)="toggle('bold')">Bold
+    <input type="checkbox" (click)="toggle('small')">Small
+</div>
+
+
+<div class="notification is-info" [ngClass]="objClass">
+    this is object version example which we use for conditional
+    {{ objClass | json }}
+</div>
+
+
+<div class="notification center-it" [class.is-danger]="state === 1" [class.is-info]="state === 2">
+    State: {{state}}
+    <button (click)="state=state+1">+</button>
+    <button (click)="state=state-1">-</button>
+</div>
+
+<hr>
+<!-- Ngstyle example -->
+
+<!-- Using #<anyname> is called template reference variable
+     which holds the js object of that element on which it is applied. -->
+<input type="text" placeholder="Style key" #inputKey>
+<input type="text" placeholder="Style value" #inputValue>
+<button #mybtn class="btn" (click)="addStyle(inputKey,inputValue)">Add Style</button>
+<!-- {{ mybtn }}
+{{ inputKey }}
+{{ inputValue }} -->
+
+<div [ngStyle]="myStyle">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ratione doloremque quibusdam incidunt eum quis
+    praesentium velit similique nam! Sequi, assumenda nesciunt. Ipsam dolores voluptates necessitatibus nisi qui, vero
+    laborum.
+    <pre>
+{{myStyle | json}}
+</pre>
+</div>
+<hr>

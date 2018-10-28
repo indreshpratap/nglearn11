@@ -6,6 +6,8 @@ import { HeaderComponent } from './header.component';
 import { FooterComponent } from './footer.component';
 import { InterpolationComponent } from './examples/interpolation.component';
 import { PropertyBindingComponent } from './examples/property-binding.component';
+import { NgClassStyleComponent } from './examples/ngclass-style.component';
+import { ConditionalComponent } from './examples/conditional.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import { PropertyBindingComponent } from './examples/property-binding.component'
     HeaderComponent,
     FooterComponent,
     InterpolationComponent,
-    PropertyBindingComponent
+    PropertyBindingComponent,
+    NgClassStyleComponent,
+    ConditionalComponent
   ],
   imports: [
     BrowserModule

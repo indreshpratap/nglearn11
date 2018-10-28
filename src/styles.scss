@@ -22,3 +22,24 @@ $containerSubtract: 55px;
     border: 1px solid;
     margin-top:5px;
 }
+
+.center-it {
+    margin: 0 auto;
+    width: 400px;
+}
+
+.bold {
+    font-weight: bold;
+}
+.big {
+    font-size: 20px;
+}
+
+.chks {
+    text-align: center;
+    input {
+        display: inline-block;
+        padding:5px;
+        margin: 5px;
+    }
+}
