@@ -8,6 +8,8 @@ import { InterpolationComponent } from './examples/interpolation.component';
 import { PropertyBindingComponent } from './examples/property-binding.component';
 import { NgClassStyleComponent } from './examples/ngclass-style.component';
 import { ConditionalComponent } from './examples/conditional.component';
+import { NgForComponent } from './examples/ngfor.component';
+import { YesNoPipe } from './pipes/yesno.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { ConditionalComponent } from './examples/conditional.component';
     InterpolationComponent,
     PropertyBindingComponent,
     NgClassStyleComponent,
-    ConditionalComponent
+    ConditionalComponent,
+    NgForComponent,
+    YesNoPipe
   ],
   imports: [
     BrowserModule
