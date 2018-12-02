@@ -10,6 +10,9 @@ import { NgClassStyleComponent } from './examples/ngclass-style.component';
 import { ConditionalComponent } from './examples/conditional.component';
 import { NgForComponent } from './examples/ngfor.component';
 import { YesNoPipe } from './pipes/yesno.pipe';
+import { TodoComponent } from './examples/todo.component';
+import { InputComponent } from './examples/input.component';
+import { MessageComponent } from './examples/components/message.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { YesNoPipe } from './pipes/yesno.pipe';
     NgClassStyleComponent,
     ConditionalComponent,
     NgForComponent,
-    YesNoPipe
+    YesNoPipe,
+    TodoComponent,
+    InputComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule

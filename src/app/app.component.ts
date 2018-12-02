@@ -6,6 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+status="Please wait...."
+  
+  constructor() {
+    setTimeout(()=>{
+      this.status='Your have pending bills';
+    },5000);
+  }
 
+  taketoPaymentPage(data) {
+    console.log('Will take to payment page...', data);
+  }
   
 }

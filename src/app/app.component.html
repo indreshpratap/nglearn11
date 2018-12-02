@@ -12,6 +12,11 @@
 
   <!-- <app-conditional></app-conditional> -->
     
-  <app-ngfor></app-ngfor>
+  <!-- <app-ngfor></app-ngfor> -->
+
+  <!-- <app-todo></app-todo> -->
+  <app-message [message]="status" description="Please hurry!" (onOk)="taketoPaymentPage($event)"></app-message>
+  <app-message message="{{status}}"></app-message>
+  <app-input></app-input>
 </div>
 <app-footer></app-footer>
