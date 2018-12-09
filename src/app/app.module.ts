@@ -13,6 +13,9 @@ import { YesNoPipe } from './pipes/yesno.pipe';
 import { TodoComponent } from './examples/todo.component';
 import { InputComponent } from './examples/input.component';
 import { MessageComponent } from './examples/components/message.component';
+import { ContainerComponent } from './examples/container.component';
+import { PageComponent } from './examples/components/page/page.component';
+import { HighlightDirective } from './directives/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { MessageComponent } from './examples/components/message.component';
     YesNoPipe,
     TodoComponent,
     InputComponent,
-    MessageComponent
+    MessageComponent,
+    ContainerComponent,
+    PageComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule

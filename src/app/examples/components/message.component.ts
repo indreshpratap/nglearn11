@@ -8,7 +8,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 export class MessageComponent {
 
 @Input()  message='This is our message';
-@Input() description = "";
+@Input("desc") description = "";
 
 @Output() onOk = new EventEmitter();
 
