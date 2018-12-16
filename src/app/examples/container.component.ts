@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../services/api.service';
+import { SeqService } from '../services/seq.service';
 
 @Component({
     selector: 'app-container',
@@ -7,17 +9,17 @@ import { Component } from '@angular/core';
 })
 export class ContainerComponent {
     items;
-    constructor() {
-        this.items = [
-            { name: 'line item1', category: 'A' },
-            { name: 'line item2', category: 'A' },
-            { name: 'line item3', category: 'B' },
-            { name: 'line item4', category: 'A' },
-            { name: 'line item5', category: 'C' },
-        ]
+    constructor(
+        private apiService:ApiService,
+        private seqService: SeqService) {
+        this.items =apiService.getItems();
     }
 
     save() {
         alert('Content saved');
+    }
+
+    getNextSeq(){
+        console.log("Next =>",this.seqService.next());
     }
 }

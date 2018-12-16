@@ -16,7 +16,8 @@ import { MessageComponent } from './examples/components/message.component';
 import { ContainerComponent } from './examples/container.component';
 import { PageComponent } from './examples/components/page/page.component';
 import { HighlightDirective } from './directives/highlight.directive';
-
+import { ApiService } from './services/api.service';
+import {SeqService} from './services/seq.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,7 @@ import { HighlightDirective } from './directives/highlight.directive';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [ApiService,SeqService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

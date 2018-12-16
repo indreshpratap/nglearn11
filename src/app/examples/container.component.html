@@ -13,6 +13,7 @@
             <tbody>
                 <ng-container *ngFor="let item of items">
                     <tr *ngIf="item.category==='A'">
+                        <td>{{item.id}}</td>
                         <td>{{item.name}}</td>
                         <td> {{item.category}}</td>
                     </tr>
@@ -22,5 +23,6 @@
     </div>
     <div page-footer>
         <button (click)="save()">Save</button>
+        <button (click)="getNextSeq()">Next Seq</button>
     </div>
 </app-page>
