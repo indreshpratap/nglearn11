@@ -48,3 +48,8 @@ $containerSubtract: 55px;
 .done .txt  {
     text-decoration: line-through;
 }
+
+.has-dropdown.active > .navbar-link {
+    color:darkgreen;
+}
+a.active {color:red}

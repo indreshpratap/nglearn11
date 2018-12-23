@@ -18,6 +18,8 @@ import { PageComponent } from './examples/components/page/page.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { ApiService } from './services/api.service';
 import {SeqService} from './services/seq.service';
+import { RouterModule } from '@angular/router';
+import { routes } from './app.routing';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +39,8 @@ import {SeqService} from './services/seq.service';
     HighlightDirective
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [ApiService,SeqService],
   bootstrap: [AppComponent]

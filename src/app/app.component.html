@@ -1,4 +1,31 @@
 <app-header></app-header>
+<div class=" section ">
+<div class="columns">
+  <div class="column is-2">
+    <div class="card">
+      <div class="card-content">
+    <ul>
+      <li><a routerLink="interpolation" routerLinkActive="active">Interpolation</a></li>
+      <li><a routerLink="property-binding" routerLinkActive="active">Property Binding</a></li>
+      <li><a routerLink="conditional" routerLinkActive="active">conditional</a></li>
+      <li><a routerLink="container" routerLinkActive="active">container</a></li>
+      <li><a routerLink="input" routerLinkActive="active">input</a></li>
+    </ul>
+  </div>
+</div>
+  </div>
+  <div class="column">
+    <div class="card">
+<div class="card-content">
+  <router-outlet></router-outlet>
+
+</div>
+    </div>
+  </div>
+</div>
+</div>
+
+All right reserved
 <div class="app-content">
   <!-- <app-interpolation></app-interpolation> -->
   <!-- <app-interpolation></app-interpolation>
@@ -19,6 +46,6 @@
   <app-message message="{{status}}"></app-message> -->
   <!-- <app-input></app-input> -->
 
-  <app-container></app-container>
+  <!-- <app-container></app-container> -->
 </div>
 <!-- <app-footer></app-footer> -->
