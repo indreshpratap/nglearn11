@@ -20,6 +20,9 @@ import { ApiService } from './services/api.service';
 import {SeqService} from './services/seq.service';
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routing';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +39,10 @@ import { routes } from './app.routing';
     MessageComponent,
     ContainerComponent,
     PageComponent,
-    HighlightDirective
+    HighlightDirective,
+    NotFoundComponent,
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
