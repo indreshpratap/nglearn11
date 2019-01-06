@@ -1,0 +1,30 @@
+<app-header></app-header>
+<div class=" section ">
+  <div class="columns">
+    <div class="column is-2">
+      <div class="card">
+        <div class="card-content">
+          <ul>
+            <li>Admin</li>
+            <li><a routerLink="/home/admin/new-inventory" routerLinkActive="active">New Inventory</a></li>
+            <li><a routerLink="/home/admin/list-inventory" routerLinkActive="active">List Inventory</a></li>
+            <li><a routerLink="/home/admin/category" routerLinkActive="active">Category</a></li>
+            <li>Front Office</li>
+            <li><a routerLink="/home/office/process-order" routerLinkActive="active">Process Order</a></li>
+            <li><a routerLink="/home/office/invoice" routerLinkActive="active">Invoice</a></li>
+            </ul>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="card">
+        <div class="card-content">
+          <router-outlet></router-outlet>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
