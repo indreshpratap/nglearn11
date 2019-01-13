@@ -16,6 +16,16 @@ input {
     width:93%;
     margin-bottom: 10px;
     padding:1em;
+    outline: none;
+
+    &.ng-invalid {
+        border:1px solid tomato;
+    }
+    &.ng-valid {
+        // background: lightgreen;
+        border:1px solid green;
+    }
 }
+
 
 }

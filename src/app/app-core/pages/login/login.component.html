@@ -4,9 +4,27 @@
       <b>Login</b>
     </div>
     <div class="card-content">
-      <input type="text" placeholder="Username">
-      <input type="password" placeholder="Password">
-      <button class="button" (click)="doLogin()">Login</button>
+      <form #loginform="ngForm">
+      <!-- <input type="text" name="username" required placeholder="Username" [(ngModel)]="username"> -->
+      <input type="text" name="username" minlength="10" required placeholder="Username" #user="ngModel" [ngModel]="username">
+      <app-input-errors label="Username" [messages]="{required:'Please input username/email'}" [control]="user"></app-input-errors>
+      <!-- <div *ngIf="user.touched && user.errors && user.errors['required']">Username is required</div> -->
+      <input type="password" pattern="[a-z]*" name="pwd" minlength="5" required placeholder="Password" #pwd="ngModel" ngModel>
+      <app-input-errors [messages]="{pattern:'Only small letters are allowed',required:'Input password'}" label="Password" [control]="pwd"></app-input-errors>
+      <!-- <div *ngIf="loginform?.controls['pwd']?.errors?.minlength">Minlength is 5</div> -->
+      <!-- <div *ngIf="pwd?.errors['required']">Password is required</div>
+      <div *ngIf="pwd?.errors['minlength']">Minlength is 5</div> -->
+
+      <!-- {{pwd.errors|json}} -->
+      <button class="button" [disabled]="loginform.invalid" (click)="doLogin(loginform)">Login</button> 
+      <button class="button"  (click)="loginform.control.disable()">Disable</button> 
+      <button class="button"  (click)="loginform.control.enable()">Enable</button> 
+      <button class="button"  (click)="user.control.disable()">Disable Username</button> 
+      <button class="button"  (click)="user.control.enable()">Enable Username</button> 
+    
+     </form>
+     <!-- {{loginform}} -->
+      {{username}},{{password}}
     </div>
   </div>
 </div>

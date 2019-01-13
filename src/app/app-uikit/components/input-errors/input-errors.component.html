@@ -1,0 +1,3 @@
+<div *ngIf="control && control.touched && control.errors" class="input-errors">
+ <div *ngFor="let key of getKeys()">{{getMessage(key)}}</div>
+</div>

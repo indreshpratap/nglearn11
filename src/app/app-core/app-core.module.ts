@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { corePages } from './pages';
 import { coreComponents } from './components';
-import { RouterModule } from '@angular/router';
+import { AppUikitModule } from '../app-uikit/app-uikit.module';
 
 
 @NgModule({
   imports: [
-    CommonModule,
-    RouterModule
+    AppUikitModule
   ],
   declarations: [...corePages, ...coreComponents]
 })
