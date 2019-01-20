@@ -1,0 +1,8 @@
+<div class="item">
+  <button class="plus" (click)="onAdd.emit(category)">+</button> {{category.name}}
+<ul class="sub-cat" *ngIf="category.children">
+  <li *ngFor="let subcat of category.children">
+    <app-category-item [category]="subcat" (onAdd)="onAdd.emit($event)"></app-category-item>
+  </li>
+</ul>
+</div>

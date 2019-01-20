@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { adminPages, adminPageRoutes } from './pages';
 import { RouterModule } from '@angular/router';
+import { AppUikitModule } from '../app-uikit/app-uikit.module';
+import { adminComponents } from './components';
 
 @NgModule({
   imports: [
-    CommonModule,
-     RouterModule.forChild(adminPageRoutes)
+    AppUikitModule,
+    RouterModule.forChild(adminPageRoutes)
   ],
-  declarations: adminPages
+  declarations: [...adminPages,...adminComponents]
 })
 export class AppAdminModule { }

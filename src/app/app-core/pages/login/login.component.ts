@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   doLogin(loginform){
     console.log(loginform.value);
     console.log(loginform);
-    // this.router.navigate(['home']);
+     this.router.navigate(['home']);
     // this.router.navigateByUrl('/home');
   }
 
