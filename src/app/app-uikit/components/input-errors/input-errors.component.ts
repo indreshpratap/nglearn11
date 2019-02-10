@@ -34,10 +34,14 @@ export class InputErrorsComponent implements OnInit {
   }
 
   private defaultMessage(key) {
+    console.log(this.control.errors);
     switch(key) {
       case 'required': return `${this.getLabel()} is required`; 
       case 'minlength': return `${this.getLabel()} minimum length is ${this.control.errors[key]['requiredLength']}`; 
       case 'pattern': return `${this.getLabel()} pattern mismatch `; 
+      case 'min': return `${this.getLabel()} minimum value can be ${this.control.errors[key]['min']}`; ; 
+      case 'max': return `${this.getLabel()} maximum value can be ${this.control.errors[key]['max']}`; ; 
+      case 'maxlength': return `${this.getLabel()} max length is ${this.control.errors[key]['requiredLength']}`; 
       default: break;
     }
   }
