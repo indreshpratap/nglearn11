@@ -1,26 +1,54 @@
-<p>
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. At, modi corrupti sed magni quia quasi vero pariatur beatae!
-  Perferendis enim provident maxime numquam ab dignissimos id hic dicta expedita incidunt?
-  Lorem ipsum, dolor sit amet consectetur adipisicing elit. A optio, obcaecati ex omnis aliquam consequuntur animi
-  similique odit excepturi nobis. Consectetur ab corrupti rem laborum error cupiditate, velit eius quod?
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. At, modi corrupti sed magni quia quasi vero pariatur beatae!
-  Perferendis enim provident maxime numquam ab dignissimos id hic dicta expedita incidunt?
-  Lorem ipsum, dolor sit amet consectetur adipisicing elit. A optio, obcaecati ex omnis aliquam consequuntur animi
-  similique odit excepturi nobis. Consectetur ab corrupti rem laborum error cupiditate, velit eius quod?
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. At, modi corrupti sed magni quia quasi vero pariatur beatae!
-  Perferendis enim provident maxime numquam ab dignissimos id hic dicta expedita incidunt?
-  Lorem ipsum, dolor sit amet consectetur adipisicing elit. A optio, obcaecati ex omnis aliquam consequuntur animi
-  similique odit excepturi nobis. Consectetur ab corrupti rem laborum error cupiditate, velit eius quod?
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. At, modi corrupti sed magni quia quasi vero pariatur beatae!
-  Perferendis enim provident maxime numquam ab dignissimos id hic dicta expedita incidunt?
-  Lorem ipsum, dolor sit amet consectetur adipisicing elit. A optio, obcaecati ex omnis aliquam consequuntur animi
-  similique odit excepturi nobis. Consectetur ab corrupti rem laborum error cupiditate, velit eius quod?
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. At, modi corrupti sed magni quia quasi vero pariatur beatae!
-  Perferendis enim provident maxime numquam ab dignissimos id hic dicta expedita incidunt?
-  Lorem ipsum, dolor sit amet consectetur adipisicing elit. A optio, obcaecati ex omnis aliquam consequuntur animi
-  similique odit excepturi nobis. Consectetur ab corrupti rem laborum error cupiditate, velit eius quod?
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. At, modi corrupti sed magni quia quasi vero pariatur beatae!
-  Perferendis enim provident maxime numquam ab dignissimos id hic dicta expedita incidunt?
-  Lorem ipsum, dolor sit amet consectetur adipisicing elit. A optio, obcaecati ex omnis aliquam consequuntur animi
-  similique odit excepturi nobis. Consectetur ab corrupti rem laborum error cupiditate, velit eius quod?
-</p>
+<h3 class="title is-3">List</h3>
+<button class="button is-primary" (click)="fetchList()">Fetch User</button>
+<button class="button is-link" (click)="fetchPost()">Fetch Post</button>
+
+<hr>
+<div *ngIf="loading">Loading users....</div>
+<div *ngIf="list && list.length">
+<h4 class="title is-4">Users List</h4>
+  <table class="table is-bordered">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Website</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of list;let index=index">
+        <td> {{index+1}} </td>
+        <td>{{item.name}}</td>
+        <td>{{item.username}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.phone}}</td>
+        <td>{{item.website}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+  <div *ngIf="posts && posts.length">
+      <h4 class="title is-4">Posts </h4>
+        <table class="table is-bordered">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Title</th>
+             
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let post of posts;let index=index">
+              <td> {{index+1}} </td>
+              <td>{{post.title}}</td>
+            </tr>
+          </tbody>
+        </table>
+      
+        </div>
+
+

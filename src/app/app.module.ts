@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { routes } from './app.routing';
 import { AppCoreModule } from './app-core/app-core.module';
 import { AppAdminModule } from './app-admin/app-admin.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AppAdminModule } from './app-admin/app-admin.module';
   imports: [
     BrowserModule,
     AppCoreModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpClientModule
   ],
   providers: [ApiService, SeqService],
   bootstrap: [AppComponent]
