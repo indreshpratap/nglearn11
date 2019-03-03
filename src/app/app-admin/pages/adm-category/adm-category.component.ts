@@ -1,22 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit, AfterViewInit, DoCheck } from '@angular/core';
 import { LocStorage } from '../../../services/storage.service';
+
 
 @Component({
   selector: 'app-adm-category',
   templateUrl: './adm-category.component.html',
   styleUrls: ['./adm-category.component.scss']
 })
-export class AdmCategoryComponent implements OnInit {
-
+export class AdmCategoryComponent implements OnInit, AfterContentInit, AfterViewInit,DoCheck {
+  
   categories = [];
   currentCategory;
   isSaveAsSubCategory = false;
   readonly STORAGE_KEY = '11_categories';
   constructor() {
+  }
+  
+  ngOnInit() {
     this.getCategories();
+    console.log("ng onInit for AdmCategoryComponent");
+  }
+  
+  ngDoCheck(): void {
+    console.log("ng doCheck for AdmCategoryComponent");
+  }
+  ngAfterContentInit() {
+    console.log("ng After content init AdmCategoryComponent");
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
+    console.log("ng After view init AdmCategoryComponent");
+  }
+
+  ngOnDestroy(): void {
+    console.log("ngOnDestroy AdmCategoryComponent");
   }
 
   save(form) {

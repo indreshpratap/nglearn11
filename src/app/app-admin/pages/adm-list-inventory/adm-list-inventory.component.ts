@@ -13,15 +13,15 @@ export class AdmListInventoryComponent implements OnInit {
   constructor(private publicApi: PublicApiClient) { }
 
   ngOnInit() {
+    this.fetchList();
+    this.fetchPost();
   }
 
   fetchList() {
     this.loading = true;
     this.list = null;
     setTimeout(() => {
-      
-   
-    this.publicApi.get('users')
+      this.publicApi.get('users')
       .subscribe((res: any) => {
         this.loading = false;
         this.list = res.data;
