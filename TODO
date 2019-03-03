@@ -1,0 +1,35 @@
+Admin:
+  ✔ Category @done(19-03-03 17:29)
+  ☐ New Inventory with images
+  ☐ Edit Inventory
+  ☐ Delete Inventory
+  ☐ List Inventory along with filters  (Just like product listing)
+
+Client:
+  ☐ Product Listing
+    * Row based listing
+    * thumbnail photo
+    * Product name
+    * Category
+    * Price
+    * Brand
+  ☐ Product Details
+    * Single product description with details and add to cart
+  ☐ Book Order Form (Cart)
+    * List of selected items same as product listing with one button to remove from cart
+    * At bottom place order
+Order Manager:
+  ☐ Process Order
+    * Order id
+    * Order by
+    * User phone
+    * User email
+  ☐ Invoice
+
+Other Implementation:
+  ☐ Role based security along with Screens
+  ☐ Routing with Params
+  ☐ Auth Guard
+  ☐ Api Integration with error handling
+  ☐ ngOnChanges
+  ☐ View In-Capsulation
