@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterContentInit, AfterViewInit, DoCheck } from '@angular/core';
 import { LocStorage } from '../../../services/storage.service';
 
-
+import{cloneDeep} from 'lodash';
 @Component({
   selector: 'app-adm-category',
   templateUrl: './adm-category.component.html',
@@ -10,8 +10,10 @@ import { LocStorage } from '../../../services/storage.service';
 export class AdmCategoryComponent implements OnInit, AfterContentInit, AfterViewInit,DoCheck {
   
   categories = [];
+  copyOfCategories = [];
   currentCategory;
   isSaveAsSubCategory = false;
+  parentStr;
   readonly STORAGE_KEY = '11_categories';
   constructor() {
   }
@@ -38,6 +40,7 @@ export class AdmCategoryComponent implements OnInit, AfterContentInit, AfterView
 
   save(form) {
     if (form.value.category) {
+      
       //!saving sub category
       if (this.isSaveAsSubCategory && this.currentCategory) {
         // checking if there is children array or not if not there add a blank array.
@@ -50,13 +53,40 @@ export class AdmCategoryComponent implements OnInit, AfterContentInit, AfterView
         this.categories.push({ name: form.value.category });
       }
       form.control.reset();
-      LocStorage.storeJson(this.STORAGE_KEY, this.categories);
+      this.store();
     }
   }
 
-  addSubCategory(category) {
-    this.currentCategory = category;
+  store() {
+    let copyCat = cloneDeep(this.categories);
+    copyCat.forEach(item=>{
+      this.clearParent(item);
+    });
+    LocStorage.storeJson(this.STORAGE_KEY, copyCat);
+  }
+
+  clearParent(item) {
+    delete item.parent;
+    if(item.children){
+      item.children.forEach(element => {
+        this.clearParent(element);
+      });
+    }
+  }
+  
+extractParent(item,end) {
+  if(item.parent){
+    return  this.extractParent(item.parent, item.parent.name+'-->'+end);
+  }else {
+    return end;
+  }
+}
+
+
+  addSubCategory(selection) { // {category:any, parent:any}
+    this.currentCategory = selection.category;
     this.isSaveAsSubCategory = true;
+    this.parentStr = this.extractParent(selection.category, selection.category.name);
   }
 
 
@@ -73,4 +103,6 @@ export class AdmCategoryComponent implements OnInit, AfterContentInit, AfterView
     }
   }
 
+
+  
 }

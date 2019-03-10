@@ -8,10 +8,18 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class CategoryItemComponent implements OnInit {
 
   @Input() category;
-  @Output() onAdd = new EventEmitter<any>();
+  @Input() parent;
+  @Output() onSelection = new EventEmitter<any>();
+  private _currentCategory;
   constructor() { }
 
   ngOnInit() {
+   // this._currentCategory = {...this.category};
+    this.category.parent = this.parent;
+  }
+
+  onSelect(){
+    this.onSelection.emit({category:this.category});
   }
 
 }

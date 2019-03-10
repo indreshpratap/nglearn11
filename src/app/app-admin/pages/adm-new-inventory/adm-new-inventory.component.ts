@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
+import { ApiClient } from 'src/app/services/api.client';
 
 @Component({
   selector: 'app-adm-new-inventory',
@@ -10,7 +11,7 @@ export class AdmNewInventoryComponent implements OnInit {
 
   productForm: FormGroup;
   features: FormArray;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,private api:ApiClient) { }
 
   ngOnInit() {
     this.prepareForm();
@@ -31,11 +32,12 @@ export class AdmNewInventoryComponent implements OnInit {
 
     this.productForm = this.fb.group({
       category: [],
-      name: [null, [Validators.required, Validators.maxLength(2)]],
+      name: [null, [Validators.required, Validators.maxLength(2000)]],
       originalPrice: [0, [Validators.required, Validators.min(1), Validators.max(500000)]],
       discountPrice: [0, [Validators.required, Validators.min(1), Validators.max(500000)]],
-      description: [null, [Validators.required, Validators.maxLength(200)]],
+      description: [null, [Validators.required, Validators.maxLength(300)]],
       quantity: [1, [Validators.required, Validators.min(0), Validators.max(2000)]],
+      brand: [, [Validators.required]],
 
       details: this.fb.group({
         detailDescription: [],
@@ -52,6 +54,21 @@ export class AdmNewInventoryComponent implements OnInit {
       label: [, Validators.required],
       description: [, Validators.required]
     }))
+  }
+
+
+  save() {
+    if(this.productForm.valid){
+      let data = this.productForm.value;
+      this.api.post('admin/save-inventory',data).subscribe(res=>{
+       this.clearAfterSave();
+      })
+    }
+  }
+
+  clearAfterSave(){
+    this.productForm.reset();
+    this.features = this.fb.array([]);
   }
 
   removeFeature(index) {

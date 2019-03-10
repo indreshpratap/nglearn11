@@ -2,3 +2,8 @@ input,textarea,label {
 display: block;   
 width: 100%; 
 }
+
+table.is-bordered {
+    table-layout: fixed;
+    width: 100%;
+}
