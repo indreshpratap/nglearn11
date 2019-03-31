@@ -1,7 +1,7 @@
 Admin:
   ✔ Category @done(19-03-03 17:29)
   ☐ New Inventory with images
-  ☐ Edit Inventory
+  ✔ Edit Inventory @done(19-03-31 16:36)
   ☐ Delete Inventory
   ☐ List Inventory along with filters  (Just like product listing)
 
@@ -28,7 +28,7 @@ Order Manager:
 
 Other Implementation:
   ☐ Role based security along with Screens
-  ☐ Routing with Params
+  ✔ Routing with Params @done(19-03-31 16:36)
   ☐ Auth Guard
   ☐ Api Integration with error handling
   ☐ ngOnChanges

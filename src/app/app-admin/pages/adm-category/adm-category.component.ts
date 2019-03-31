@@ -2,6 +2,7 @@ import { Component, OnInit, AfterContentInit, AfterViewInit, DoCheck } from '@an
 import { LocStorage } from '../../../services/storage.service';
 
 import{cloneDeep} from 'lodash';
+import { ApiClient } from 'src/app/services/api.client';
 @Component({
   selector: 'app-adm-category',
   templateUrl: './adm-category.component.html',
@@ -15,7 +16,7 @@ export class AdmCategoryComponent implements OnInit, AfterContentInit, AfterView
   isSaveAsSubCategory = false;
   parentStr;
   readonly STORAGE_KEY = '11_categories';
-  constructor() {
+  constructor(private api:ApiClient) {
   }
   
   ngOnInit() {
@@ -53,18 +54,31 @@ export class AdmCategoryComponent implements OnInit, AfterContentInit, AfterView
         this.categories.push({ name: form.value.category });
       }
       form.control.reset();
-      this.store();
+      // this.store();
+      this.saveToDB();
     }
   }
 
+
+  saveToDB(){
+    let data = this.cleanCategory();
+    this.api.post('admin/save-category',data).subscribe(res=>{
+
+    });
+  }
   store() {
+   
+    LocStorage.storeJson(this.STORAGE_KEY, this.cleanCategory());
+  }
+
+
+  cleanCategory(){
     let copyCat = cloneDeep(this.categories);
     copyCat.forEach(item=>{
       this.clearParent(item);
     });
-    LocStorage.storeJson(this.STORAGE_KEY, copyCat);
+    return copyCat;
   }
-
   clearParent(item) {
     delete item.parent;
     if(item.children){
@@ -76,7 +90,7 @@ export class AdmCategoryComponent implements OnInit, AfterContentInit, AfterView
   
 extractParent(item,end) {
   if(item.parent){
-    return  this.extractParent(item.parent, item.parent.name+'-->'+end);
+    return  this.extractParent(item.parent, item.parent.name+'/'+end);
   }else {
     return end;
   }

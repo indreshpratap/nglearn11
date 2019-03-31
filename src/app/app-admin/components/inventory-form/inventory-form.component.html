@@ -1,0 +1,57 @@
+<form [formGroup]="productForm">
+
+    <div class="columns is-multiline">
+      <div class="column is-12">
+       <label>Product Name:</label> <input maxlength="50" type="text" formControlName="name">
+       <app-input-errors [control]="productForm.get('name')"></app-input-errors>
+      </div>
+      <div class="column is-2">
+       <label>Original Price:</label> <input type="number" formControlName="originalPrice">
+       <app-input-errors [control]="productForm.get('originalPrice')"></app-input-errors>
+      </div>
+      <div class="column is-2">
+       <label>Discount Price:</label> <input type="number" formControlName="discountPrice">
+       <app-input-errors [control]="productForm.get('discountPrice')"></app-input-errors>
+      </div>
+      <div class="column is-2">
+        <label>Quantity</label>
+        <input type="number" formControlName="quantity">
+        <app-input-errors [control]="productForm.get('quantity')"></app-input-errors>
+      </div>
+      <div class="column is-6">
+        <label>Brand</label>
+        <input type="text" formControlName="brand">
+        <app-input-errors [control]="productForm.get('brand')"></app-input-errors>
+      </div>
+      <div class="column is-12">
+        <label>Description</label>
+        <textarea rows="3" formControlName="description"></textarea>
+        <app-input-errors [control]="productForm.get('description')"></app-input-errors>
+      </div>
+    
+    </div>
+    <div class="column is-12">
+      <button class="button is-primary" (click)="addFeature({})">Add Feature</button>
+      <button class="button is-success" (click)="save()">Save</button>
+    </div>
+    <div class="column is-12" formGroupName="details">
+      <h3>Details</h3>
+  
+      <table class="table is-bordered" formArrayName="features">
+        <tbody>
+          <tr *ngFor="let feature of features.controls;let index=index" [formGroupName]="index">
+            <td style="width:200px">
+              <input type="text" placeholder="Label" formControlName="label">
+            </td>
+            <td>
+                <input type="text" placeholder="Description" formControlName="description">
+            </td>
+            <td style="width:60px">
+                <button class="button is-danger is-small" (click)="removeFeature(index)">x</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+  </form>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PublicApiClient } from 'src/app/services/public-api.client';
+import { ApiClient } from 'src/app/services/api.client';
+import { ToastService } from 'src/app/services/toast.service';
 @Component({
   selector: 'app-adm-list-inventory',
   templateUrl: './adm-list-inventory.component.html',
@@ -9,12 +11,21 @@ export class AdmListInventoryComponent implements OnInit {
 
   list;
   posts;
+  inventory;
   loading= false;
-  constructor(private publicApi: PublicApiClient) { }
+  showDetails = false;
+selected;
+
+  constructor(
+    private publicApi: PublicApiClient,
+    private api:ApiClient,
+    private toast: ToastService
+    ) { }
 
   ngOnInit() {
-    this.fetchList();
-    this.fetchPost();
+    this.fetchInventory();
+    //this.fetchList();
+   // this.fetchPost();
   }
 
   fetchList() {
@@ -45,4 +56,17 @@ export class AdmListInventoryComponent implements OnInit {
       })
   }
 
+
+  fetchInventory(){
+    this.api.get("admin/inventory").subscribe(res=>{
+      this.inventory = res.data;
+     // this.toast.successOnly("Inventory loaded");
+    })
+  }
+
+  viewDetail(item)
+{
+  this.selected = item;
+  this.showDetails = true;
+}
 }
