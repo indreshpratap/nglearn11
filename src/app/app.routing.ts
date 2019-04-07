@@ -5,6 +5,7 @@ import {
     HomeComponent
 } from './app-core/pages';
 import { adminPageRoutes } from './app-admin/pages';
+import { AuthGuard } from './guards/auth.guard';
 
 
 
@@ -12,7 +13,8 @@ export const routes: Routes = [
     { path: "", component: LoginComponent },
     { path: "contact", component: ContactUsComponent },
     {
-        path: "home", component: HomeComponent,
+        path: "home", component: HomeComponent,canActivate:[AuthGuard], 
+        canActivateChild:[AuthGuard],
         children: [
             {
                 path: 'admin',

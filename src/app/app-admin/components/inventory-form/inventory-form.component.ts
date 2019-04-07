@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormArray, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiClient } from 'src/app/services/api.client';
 import { ToastService } from 'src/app/services/toast.service';
+import { CanDeactivateRef } from 'src/app/can-deactivate-ref';
 
 @Component({
   selector: 'app-inventory-form',
@@ -9,6 +10,7 @@ import { ToastService } from 'src/app/services/toast.service';
   styleUrls: ['./inventory-form.component.scss']
 })
 export class InventoryFormComponent implements OnInit {
+  
 
   productForm: FormGroup;
   features: FormArray;
@@ -84,5 +86,7 @@ export class InventoryFormComponent implements OnInit {
     })
     
   }
+
+ 
 
 }

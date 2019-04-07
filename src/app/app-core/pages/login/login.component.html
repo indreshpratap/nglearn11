@@ -6,7 +6,7 @@
     <div class="card-content">
       <form #loginform="ngForm">
       <!-- <input type="text" name="username" required placeholder="Username" [(ngModel)]="username"> -->
-      <input type="text" name="username" minlength="10" required placeholder="Username" #user="ngModel" [ngModel]="username">
+      <input type="text" name="username" minlength="3" required placeholder="Username" #user="ngModel" [ngModel]="username">
       <app-input-errors label="Username" [messages]="{required:'Please input username/email'}" [control]="user"></app-input-errors>
       <!-- <div *ngIf="user.touched && user.errors && user.errors['required']">Username is required</div> -->
       <input type="password" pattern="[a-z]*" name="pwd" minlength="5" required placeholder="Password" #pwd="ngModel" ngModel>
