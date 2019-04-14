@@ -1,5 +1,22 @@
 var router = require('express').Router();
 var db = require('../../conf/db');
+var multer = require('multer');
+var path = require('path');
+var ASSETS_IMAGE_PATH = path.join(__dirname, "..","..",'public', "images");
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, ASSETS_IMAGE_PATH);
+    },
+    filename: function (req, file, cb) {
+        cb(null, "product-" + Date.now() + path.extname(file.originalname));
+    }
+});
+
+var upload = multer({
+    storage: storage
+});
+
 
 module.exports = router;
 
@@ -9,6 +26,14 @@ router.get('/inventory', (req, res) => {
     db.inventory.find({ active: true }, (err, docs) => {
         res.json(docs);
     })
+});
+
+router.post('/upload-image', upload.single('file'), (req, res) => {
+    res.json({
+        file: req.file.filename,
+        size: req.file.size
+    });
+
 });
 router.get('/inventory/:id', (req, res) => {
     db.inventory.findOne({ _id: req.params.id, active: true }, (err, doc) => {

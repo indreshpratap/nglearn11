@@ -4,9 +4,31 @@
 
 <hr>
 <div *ngIf="loading">Loading....</div>
+<form [formGroup]="filterForm">
+  <div class="columns">
+
+  
+  <div class="column is-3">
+    <input placeholder="Filter name" formControlName="name">
+  </div>
+  <div class="column is-3">
+    <input placeholder="Filter brand" formControlName="brand">
+  </div>
+  <div class="column is-3">
+    <input placeholder="Filter Quantity" formControlName="quantity">
+  </div>
+  <div class="column is-3">
+<button class="button is-primary" (click)="filter()">Filter</button>
+<button class="button" (click)="clear()">Clear</button>
+</div>
+</div>
+</form>
+
+
 <table class="table is-bordered">
   <thead>
     <tr>
+      <td>Image</td>
       <td>Name</td>
       <td>Quantity</td>
       <td>Brand</td>
@@ -16,6 +38,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let item of inventory">
+      <td>
+        <img style="width: 100px;height: 50px" *ngIf="item.image" src="{{imagePath+item.image}}">
+      </td>
       <td>
         {{item.name}}
       </td>
@@ -30,42 +55,43 @@
       </td>
       <td>
         <button pButton label="View" (click)="viewDetail(item)"></button>
+        <button pButton label="Add to cart" (click)="cart.addToCart(item)"></button>
         <a pButton label="Edit" class="ui-button-secondary" [routerLink]="['../edit-inventory',item._id]"></a>
       </td>
     </tr>
   </tbody>
 </table>
 
-<p-dialog header="Inventory Detail" [(visible)]="showDetails" [modal]="true" [responsive]="true" [style]="{width: '550px', minWidth: '200px'}" [minY]="70" 
-        [maximizable]="true" [baseZIndex]="10000">
-    <div *ngIf="selected">
-     <div>
-       Name:  {{ selected.name }}
-      </div>
-       
-      <div>
-        Details: {{ selected.details.detailDescription }}
-      
-        <table class="table is-bordered">
-          <thead>
-            <tr>
-              <th>Label</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let feature of selected.details.features">
-              <td>
-                {{feature.label}}
-              </td>
-              <td>{{feature.description}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+<p-dialog header="Inventory Detail" [(visible)]="showDetails" [modal]="true" [responsive]="true"
+  [style]="{width: '550px', minWidth: '200px'}" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
+  <div *ngIf="selected">
+    <div>
+      Name: {{ selected.name }}
+    </div>
 
-     </div>
-       
+    <div>
+      Details: {{ selected.details.detailDescription }}
+
+      <table class="table is-bordered">
+        <thead>
+          <tr>
+            <th>Label</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let feature of selected.details.features">
+            <td>
+              {{feature.label}}
+            </td>
+            <td>{{feature.description}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
 </p-dialog>
 <!--
 <div *ngIf="list && list.length">

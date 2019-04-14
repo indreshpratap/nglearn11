@@ -3,6 +3,7 @@ import { FormArray, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiClient } from 'src/app/services/api.client';
 import { ToastService } from 'src/app/services/toast.service';
 import { CanDeactivateRef } from 'src/app/can-deactivate-ref';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-inventory-form',
@@ -11,7 +12,7 @@ import { CanDeactivateRef } from 'src/app/can-deactivate-ref';
 })
 export class InventoryFormComponent implements OnInit {
   
-
+  apiPath = environment.apiPath;
   productForm: FormGroup;
   features: FormArray;
   @Output() onSave = new EventEmitter<any>();
@@ -36,6 +37,7 @@ export class InventoryFormComponent implements OnInit {
 
     this.productForm = this.fb.group({
       category: [],
+      image:[],
       name: [null, [Validators.required, Validators.maxLength(2000)]],
       originalPrice: [0, [Validators.required, Validators.min(1), Validators.max(500000)]],
       discountPrice: [0, [Validators.required, Validators.min(1), Validators.max(500000)]],
@@ -87,6 +89,17 @@ export class InventoryFormComponent implements OnInit {
     
   }
 
+  afterFileUpload(event) {
+    //console.log(event);
+    if (event.originalEvent.status === 200) {
+      // alert("File uploaded, please save to persist it!");
+      var res = event.originalEvent.body;
+     this.productForm.get('image').setValue(res.file);
+    } else {
+      alert("Failed to upload, try again");
+      return null;
+    }
+  }
  
 
 }

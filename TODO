@@ -1,21 +1,21 @@
 Admin:
   ✔ Category @done(19-03-03 17:29)
-  ☐ New Inventory with images
+  ✔ New Inventory with images @done(19-04-14 15:49)
   ✔ Edit Inventory @done(19-03-31 16:36)
-  ☐ Delete Inventory
-  ☐ List Inventory along with filters  (Just like product listing)
+  ✔ Delete Inventory @done(19-04-14 15:50)
+  ✔ List Inventory along with filters  (Just like product listing) @done(19-04-14 16:07)
 
 Client:
-  ☐ Product Listing
+  ✔ Product Listing @done(19-04-14 16:30)
     * Row based listing
     * thumbnail photo
     * Product name
     * Category
     * Price
     * Brand
-  ☐ Product Details
+  ✔ Product Details @done(19-04-14 16:30)
     * Single product description with details and add to cart
-  ☐ Book Order Form (Cart)
+  ✔ Book Order Form (Cart) @done(19-04-14 16:30)
     * List of selected items same as product listing with one button to remove from cart
     * At bottom place order
 Order Manager:
@@ -29,7 +29,7 @@ Order Manager:
 Other Implementation:
   ☐ Role based security along with Screens
   ✔ Routing with Params @done(19-03-31 16:36)
-  ☐ Auth Guard
+  ✔ Auth Guard @done(19-04-14 16:08)
   ☐ Api Integration with error handling
   ☐ ngOnChanges
   ☐ View In-Capsulation

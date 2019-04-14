@@ -1,5 +1,12 @@
 <form [formGroup]="productForm">
 
+  <p-fileUpload #fileupload
+  name="file" url="{{apiPath+'admin/upload-image'}}" (onUpload)="afterFileUpload($event)" accept="image/*"
+  maxFileSize="1000000"></p-fileUpload>
+
+  <div *ngIf="productForm.get('image').value">
+    <img src="{{apiPath+'assets/images/'+productForm.get('image').value}}">
+  </div>
     <div class="columns is-multiline">
       <div class="column is-12">
        <label>Product Name:</label> <input maxlength="50" type="text" formControlName="name">

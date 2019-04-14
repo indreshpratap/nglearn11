@@ -6,7 +6,7 @@ var bindApiRoutes = require('./modules/api.routes');
 
 
 var app = express();
-
+app.use("/api/assets/",express.static(__dirname + "/public"));
 app.use(cors());
 app.use(bodyParser.json());
 

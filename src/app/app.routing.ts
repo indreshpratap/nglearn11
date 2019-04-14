@@ -21,6 +21,10 @@ export const routes: Routes = [
                 loadChildren: "./app-admin/app-admin.module#AppAdminModule"
             },
             {
+                path: 'user',
+                loadChildren: "./app-user/app-user.module#AppUserModule"
+            },
+            {
                 path: 'office',
                 loadChildren: './app-frontoffice/app-frontoffice.module#AppFrontofficeModule'
             }
