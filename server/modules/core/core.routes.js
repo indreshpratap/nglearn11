@@ -1,5 +1,6 @@
 var router = require('express').Router();
 var db = require('../../conf/db');
+const {createToken} = require('../token.manager');
 
 router.post('/login', (req, res) => {
     let body = req.body;
@@ -7,7 +8,8 @@ router.post('/login', (req, res) => {
         if (err) {
             res.json({ status: false, error: "Internal server error" });
         } else if (user && user._id) {
-            res.json({ status: true, username: user.username, role: user.role });
+            let tokenData = createToken({username:user.username,role:user.role});
+            res.json({ token:tokenData, status: true, username: user.username, role: user.role });
         } else {
             res.json({ status: false, error: 'username password not matched!' });
         }

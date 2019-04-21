@@ -30,6 +30,6 @@ Other Implementation:
   ☐ Role based security along with Screens
   ✔ Routing with Params @done(19-03-31 16:36)
   ✔ Auth Guard @done(19-04-14 16:08)
-  ☐ Api Integration with error handling
+  ✔ Api Integration with error handling @done(19-04-21 16:11)
   ☐ ngOnChanges
   ☐ View In-Capsulation

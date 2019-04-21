@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   }
 
   doLogin(loginform) {
+    localStorage.clear();
     console.log(loginform.value);
     console.log(loginform);
     let formData = loginform.value;
@@ -25,10 +26,11 @@ export class LoginComponent implements OnInit {
       if (res.status) {
         localStorage.setItem("role", res.role);
         localStorage.setItem("username", res.username);
+        localStorage.setItem("token",res.token);
         if (res.role === 'admin') {
           this.router.navigate(['home']);
         } else {
-          this.router.navigate(["user-home"]);
+          this.router.navigate(["home"]);
         }
 
       } else {

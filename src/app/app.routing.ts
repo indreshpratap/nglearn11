@@ -6,6 +6,7 @@ import {
 } from './app-core/pages';
 import { adminPageRoutes } from './app-admin/pages';
 import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 
 
@@ -18,7 +19,9 @@ export const routes: Routes = [
         children: [
             {
                 path: 'admin',
-                loadChildren: "./app-admin/app-admin.module#AppAdminModule"
+                loadChildren: "./app-admin/app-admin.module#AppAdminModule",
+                canActivate:[AdminGuard],
+                canActivateChild:[AdminGuard]
             },
             {
                 path: 'user',

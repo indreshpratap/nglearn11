@@ -3,7 +3,6 @@ var db = require('../../conf/db');
 var multer = require('multer');
 var path = require('path');
 var ASSETS_IMAGE_PATH = path.join(__dirname, "..","..",'public', "images");
-
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, ASSETS_IMAGE_PATH);

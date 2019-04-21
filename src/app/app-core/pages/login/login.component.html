@@ -9,7 +9,7 @@
       <input type="text" name="username" minlength="3" required placeholder="Username" #user="ngModel" [ngModel]="username">
       <app-input-errors label="Username" [messages]="{required:'Please input username/email'}" [control]="user"></app-input-errors>
       <!-- <div *ngIf="user.touched && user.errors && user.errors['required']">Username is required</div> -->
-      <input type="password" pattern="[a-z]*" name="pwd" minlength="5" required placeholder="Password" #pwd="ngModel" ngModel>
+      <input type="password" pattern="[a-z1-9]*" name="pwd" minlength="5" required placeholder="Password" #pwd="ngModel" ngModel>
       <app-input-errors [messages]="{pattern:'Only small letters are allowed',required:'Input password'}" label="Password" [control]="pwd"></app-input-errors>
       <!-- <div *ngIf="loginform?.controls['pwd']?.errors?.minlength">Minlength is 5</div> -->
       <!-- <div *ngIf="pwd?.errors['required']">Password is required</div>
