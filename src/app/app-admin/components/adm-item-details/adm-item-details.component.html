@@ -1,0 +1,27 @@
+<div *ngIf="selected">
+  <div>
+    Name: {{ selected.name }}
+  </div>
+
+  <div>
+    Details: {{ selected.details.detailDescription }}
+
+    <table class="table is-bordered">
+      <thead>
+        <tr>
+          <th>Label</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let feature of selected.details.features">
+          <td>
+            {{feature.label}}
+          </td>
+          <td>{{feature.description}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

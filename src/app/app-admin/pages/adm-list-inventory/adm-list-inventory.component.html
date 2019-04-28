@@ -64,34 +64,8 @@
 
 <p-dialog header="Inventory Detail" [(visible)]="showDetails" [modal]="true" [responsive]="true"
   [style]="{width: '550px', minWidth: '200px'}" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
-  <div *ngIf="selected">
-    <div>
-      Name: {{ selected.name }}
-    </div>
-
-    <div>
-      Details: {{ selected.details.detailDescription }}
-
-      <table class="table is-bordered">
-        <thead>
-          <tr>
-            <th>Label</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let feature of selected.details.features">
-            <td>
-              {{feature.label}}
-            </td>
-            <td>{{feature.description}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-  </div>
-
+  
+<app-adm-item-details [ref]="selected?._id"></app-adm-item-details>
 </p-dialog>
 <!--
 <div *ngIf="list && list.length">

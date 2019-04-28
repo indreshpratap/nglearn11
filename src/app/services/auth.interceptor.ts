@@ -15,7 +15,11 @@ export class AuthInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler) {
         let token = localStorage.getItem("token") || '';
         let cloned = req.clone({
-             setHeaders: { 'Authorization': 'Bearer ' + token } 
+             setHeaders: { 
+                 'Authorization': 'Bearer ' + token,
+                 'DEVICE_ID':'DEDSFSDdfdsfdssd',
+                 'AUTH_TOKEN':'dfsfljdslfkjsdlkjdslkfdjslf=fdfjslfjk'
+                } 
             }
         )
         return next.handle(cloned).pipe(catchError(err=>{
